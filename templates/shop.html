@@ -1,0 +1,45 @@
+<section class="items">
+	
+	<header class="items-header">
+		<div class="row">
+			<div class="col-sm-9 col-xs-12">
+
+				<form class="form-inline" name="shopList">
+					<div class="form-actions">
+						<div class="input-group">
+
+							<input type="text" class="form-control" ng-model="itemInput" placeholder="Add New Item" autofocus required />
+							<input class="form-control" ng-model="quantityInput" placeholder="Quantity" />
+			
+							<div class="input-group-btn">
+								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null" ng-disabled="shopList.$invalid" style="height:68px;">
+									<i class="fa fa-plus"></i>&nbsp;Add Item
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+
+			<div class="col-sm-3 hidden-xs">
+				<input type="text" ng-model="filterItem" class="form-control" placeholder="Filter Items" />
+			</div>
+		</div>
+	</header>
+
+	<fieldset class="items-list">
+		<label class="items-list-item" ng-repeat="item in items | filter : filterItem">
+			<input
+			type="checkbox"
+			value="{{item.STATUS}}"
+			ng-checked="item.STATUS==2"
+			ng-click="changeStatus(item.ID,item.STATUS,item.ITEM)"
+			class="items-list-cb"/>
+			<span class="items-list-mark"></span>
+			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">{{item.ITEM}} <span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;<span class="quantity">{{item.QUANTITY}}</span></span> 
+			<a ng-click="deleteItem(item.ID)" class="pull-right red"><i class="fa fa-minus-circle"></i></a> 
+		</label>
+	</fieldset>	
+
+</section>
