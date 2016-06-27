@@ -12,6 +12,7 @@ if(isset($_GET['item']))
 	}
 
 	$query="INSERT INTO shop(item,status,created_at,quantity)  VALUES ('$item', '$status', '$created', '$quantity')";
+
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 	$result = $mysqli->affected_rows;
