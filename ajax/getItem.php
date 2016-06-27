@@ -5,7 +5,8 @@ if(isset($_GET['status']))
 {
 	$status = $mysqli->real_escape_string($_GET['status']);
 }
-$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY from shop where status like '$status' order by status,id desc, quantity asc";
+
+$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE from shop where status like '$status' order by status,id desc, quantity asc";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();

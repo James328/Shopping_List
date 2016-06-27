@@ -16,7 +16,14 @@ app.controller('shopController', function($scope, $http) {
         $scope.itemInput = "";
       });
   };
-  
+
+  $scope.updatePrice = function (item, price) {
+    $http.post("ajax/updatePrice.php?item="+item+"&price="+price).success(function(data){
+        getItem();
+        $scope.itemInput = "";
+      });
+  };
+
   $scope.deleteItem = function (item) {
     if(confirm("Are you sure to delete this item?")){
     $http.post("ajax/deleteItem.php?itemID="+item).success(function(data){
