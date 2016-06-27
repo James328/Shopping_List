@@ -41,16 +41,16 @@
 
 			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
 
-			<div ng-if="item.PRICE > 0" class="pull-right">
+			<div ng-if="item.PRICE != null" class="pull-right">
 				<span class="unit-price">${{item.PRICE}}</span>
 			</div>
 			<div ng-if="item.PRICE == null" class="pull-right">
 				<form class="form-inline" name="itemPrice">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
-							<input class="form-control" ng-model="priceInput" placeholder="Price" />
+							<input class="form-control" ng-model="priceInput" placeholder="Price" required />
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="updatePrice(item.ITEM,priceInput); itemInput = null; priceInput = null;" ng-disabled="itemPrice.$invalid" style="height:30px;">
+								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid" style="height:30px;">
 									<i class="fa fa-usd"></i>
 								</button>
 							</div>

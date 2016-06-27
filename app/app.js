@@ -17,13 +17,6 @@ app.controller('shopController', function($scope, $http) {
       });
   };
 
-  $scope.updatePrice = function (item, price) {
-    $http.post("ajax/updatePrice.php?item="+item+"&price="+price).success(function(data){
-        getItem();
-        $scope.itemInput = "";
-      });
-  };
-
   $scope.deleteItem = function (item) {
     if(confirm("Are you sure to delete this item?")){
     $http.post("ajax/deleteItem.php?itemID="+item).success(function(data){
@@ -44,6 +37,13 @@ app.controller('shopController', function($scope, $http) {
     if(status=='2'){status='0';}else{status='2';}
       $http.post("ajax/updateItem.php?itemID="+item+"&status="+status).success(function(data){
         getItem();
+      });
+  };
+
+  $scope.addPrice = function (item, price) {
+    $http.post("ajax/addPrice.php?itemID="+item+"&price="+price).success(function(data){
+        getItem();
+        $scope.itemInput = "";
       });
   };
 
