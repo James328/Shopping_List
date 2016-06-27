@@ -137,7 +137,8 @@ body{
 }
 
 
-.items-list-cb:checked ~ .items-list-desc {
+.items-list-cb:checked ~ .items-list-desc,
+.items-list-desc.strike {
   color: #34bf6e;
   text-decoration: line-through;
 }
