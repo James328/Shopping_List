@@ -9,6 +9,12 @@ app.controller('shopController', function($scope, $http) {
         $scope.items = data;
        });
   };
+  getSumPrice();
+  function getSumPrice(){
+  $http.post("ajax/getSumPrice.php").success(function(data){
+        $scope.sumPrice = data;
+      });
+  };
   
   $scope.addItem = function (item, quantity) {
     $http.post("ajax/addItem.php?item="+item+"&quantity="+quantity).success(function(data){
