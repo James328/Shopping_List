@@ -43,6 +43,7 @@
 			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
 
 			<div ng-if="item.PRICE != null" class="pull-right">
+				<a ng-click="updatePrice(item.ID)" class="pull-right" style="margin-left:10px;font-size:12px;">edit price</a>
 				<span class="unit-price">${{item.PRICE}}</span>
 			</div>
 			<div ng-if="item.PRICE == null" class="pull-right">

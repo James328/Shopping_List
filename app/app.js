@@ -54,4 +54,11 @@ app.controller('shopController', function($scope, $http) {
       });
   };
 
+  $scope.updatePrice = function(item) {
+      $http.post("ajax/updatePrice.php?itemID="+item).success(function(data){
+        getItem();
+        getSumPrice();
+      });
+  };
+
 });
