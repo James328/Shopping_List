@@ -49,6 +49,7 @@ app.controller('shopController', function($scope, $http) {
   $scope.addPrice = function (item, price) {
     $http.post("ajax/addPrice.php?itemID="+item+"&price="+price).success(function(data){
         getItem();
+        getSumPrice();
         $scope.itemInput = "";
       });
   };
