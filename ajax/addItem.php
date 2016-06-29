@@ -10,6 +10,7 @@ if(isset($_GET['item']))
 	if(isset($_GET['quantity'])){
 		$quantity = $mysqli->real_escape_string($_GET['quantity']);
 	}
+	if($quantity == undefined){ $quantity = "1"; } // Make sure $quantity is > 0
 
 	$query="INSERT INTO shop(item,status,created_at,quantity)  VALUES ('$item', '$status', '$created', '$quantity')";
 
