@@ -1,7 +1,7 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-$query="SELECT SUM(PRICE) as PRICE from shop";
+$query="SELECT SUM(PRICE * QUANTITY) as PRICE from shop";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 
