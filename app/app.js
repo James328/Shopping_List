@@ -63,4 +63,19 @@ app.controller('shopController', function($scope, $http) {
       });
   };
 
+  $scope.increaseQuantity = function(item) {
+      $http.post("ajax/increaseQuantity.php?itemID="+item).success(function(data){
+        getItem();
+        getSumPrice();
+      });
+  };
+
+  $scope.decreaseQuantity = function(item) {
+      $http.post("ajax/decreaseQuantity.php?itemID="+item).success(function(data){
+        getItem();
+        getSumPrice();
+      });
+  };
+
+
 });

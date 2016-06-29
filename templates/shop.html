@@ -38,7 +38,13 @@
 			ng-click="changeStatus(item.ID,item.STATUS,item.ITEM)"
 			class="items-list-cb"/>
 			<span class="items-list-mark"></span>
-			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">{{item.ITEM}} <span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}</span></span> 
+			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">
+				{{item.ITEM}}
+				<span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;
+				<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}</span>
+				<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default" style="padding:5px 7px;margin-left:10px;"><i class="fa fa-plus"></i></button>
+				<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default" style="padding:5px 7px;margin-left:10px;"><i class="fa fa-minus"></i></button>
+			</span> 
 
 			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
 
