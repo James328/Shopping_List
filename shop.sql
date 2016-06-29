@@ -26,24 +26,27 @@ SET time_zone = "+00:00";
 -- Table structure for table `shop`
 --
 
-CREATE TABLE IF NOT EXISTS `shop` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `shop` (
+  `id` int(11) NOT NULL,
   `item` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
+  `quantity` int(11) NOT NULL,
+  `price` decimal(4,2) DEFAULT NULL,
+  `price_type` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `shop`
 --
 
-INSERT INTO `shop` (`id`, `item`, `status`, `created_at`) VALUES
-(8, 'Cutting Board', 0, '2015-05-11'),
-(13, 'Peppers', 0, '2015-05-12'),
-(15, 'Bread', 0, '2015-05-13'),
-(16, 'Belvita bars', 0, '2015-05-13'),
-(17, 'Bananas', 0, '2015-05-13');
+INSERT INTO `shop` (`id`, `item`, `status`, `created_at`, `quantity`, `price`, `price_type`) VALUES
+(15, 'Bread', 0, '2015-05-13', 1, '5.99', 0),
+(19, 'Toilet Paper', 0, '2016-06-29', 1, NULL, 0),
+(24, 'Apples', 0, '2016-06-29', 3, NULL, 0),
+(25, 'Oranges', 0, '2016-06-29', 1, NULL, 2),
+(26, 'Pears', 0, '2016-06-29', 1, NULL, 2),
+(27, 'Beer', 0, '2016-06-29', 4, NULL, 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
