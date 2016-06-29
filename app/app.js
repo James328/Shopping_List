@@ -3,13 +3,15 @@ var app = angular.module('shopApp', []);
 
 app.controller('shopController', function($scope, $http) {
 	
-  getItem(); // Load all available items 
+  getItem();      // Load all available items
+  getSumPrice();  // Sum all of the prices
+ 
   function getItem(){  
   $http.post("ajax/getItem.php").success(function(data){
         $scope.items = data;
        });
   };
-  getSumPrice();
+
   function getSumPrice(){
   $http.post("ajax/getSumPrice.php").success(function(data){
         $scope.sumPrice = data;
