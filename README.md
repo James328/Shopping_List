@@ -1,4 +1,6 @@
 # Shopping_List
+![ScreenShot](https://raw.github.com/James328/Shopping_List/master/screenshot.png)
+
 AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angularjs-and-bootstrap-mysql-shopping-list-tutorial/. Using this as a guide towards getting my feet wet with Angular.
 
 ## TODO / Wishlist
