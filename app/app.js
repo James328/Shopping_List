@@ -9,6 +9,7 @@ app.controller('shopController', function($scope, $http) {
   function getItem(){  
   $http.post("ajax/getItem.php").success(function(data){
         $scope.items = data;
+        getSumPrice();
        });
   };
 
@@ -51,7 +52,6 @@ app.controller('shopController', function($scope, $http) {
   $scope.addPrice = function (item, price) {
     $http.post("ajax/addPrice.php?itemID="+item+"&price="+price).success(function(data){
         getItem();
-        getSumPrice();
         $scope.itemInput = "";
       });
   };
@@ -59,21 +59,18 @@ app.controller('shopController', function($scope, $http) {
   $scope.updatePrice = function(item) {
       $http.post("ajax/updatePrice.php?itemID="+item).success(function(data){
         getItem();
-        getSumPrice();
       });
   };
 
   $scope.increaseQuantity = function(item) {
       $http.post("ajax/increaseQuantity.php?itemID="+item).success(function(data){
         getItem();
-        getSumPrice();
       });
   };
 
   $scope.decreaseQuantity = function(item) {
       $http.post("ajax/decreaseQuantity.php?itemID="+item).success(function(data){
         getItem();
-        getSumPrice();
       });
   };
 
