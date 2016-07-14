@@ -57,12 +57,6 @@ app.controller('shopController', function($scope, $http) {
       $("#modal-"+item).modal("hide");
   };
 
-  $scope.updatePrice = function(item, price) {
-      $http.post("ajax/updatePrice.php?itemID="+item+"&price="+price).success(function(data){
-        getItem();
-      });
-  };
-
   $scope.increaseQuantity = function(item) {
       $http.post("ajax/increaseQuantity.php?itemID="+item).success(function(data){
         getItem();
