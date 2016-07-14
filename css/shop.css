@@ -2,6 +2,13 @@
 
 @import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
 
+/** 
+ * Bootstrap overrides
+ **/
+label {
+  margin-bottom: 0;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 
