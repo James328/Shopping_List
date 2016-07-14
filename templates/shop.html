@@ -12,7 +12,7 @@
 							<input class="form-control" ng-model="quantityInput" placeholder="Quantity" />
 			
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null;" ng-disabled="shopList.$invalid" style="height:68px;">
+								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null;" ng-disabled="shopList.$invalid">
 									<i class="fa fa-plus"></i>&nbsp;Add Item
 								</button>
 							</div>
@@ -24,7 +24,7 @@
 
 			<div class="col-sm-3 hidden-xs">
 				<input type="text" ng-model="filterItem" class="form-control" placeholder="Filter Items" />
-				<span style="color:#4CAF50;font-size:24px;margin-top:8px;float:right;">Total {{sumPrice.PRICE | currency}}</span>
+				<span class="total-price">Total {{sumPrice.PRICE | currency}}</span>
 			</div>
 		</div>
 	</header>
@@ -44,31 +44,31 @@
 				<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}</span>
 		
 				<span ng-if="item.STATUS == 0"> 
-					<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default" style="padding:5px 7px;margin-left:10px;"><i class="fa fa-plus"></i></button>
-					<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default" style="padding:5px 7px;"><i class="fa fa-minus"></i></button>
+					<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
+					<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
 				</span>
 			</span> 
 
-			<span style="padding-left:10px;color:#d0d0d0;">List ID: {{item.LIST_ID}}</span>
+			<span class="list-id">List ID: {{item.LIST_ID}}</span>
 
-			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
+			<a ng-click="deleteItem(item.ID)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
 
 			<div ng-if="item.PRICE != null" class="pull-right">
-				<span class="unit-price-{{item.ID}}"><span style="color:#d0d0d0;">${{item.PRICE}} each,</span> ${{item.PRICE * item.QUANTITY | number:2 }}</span>
+				<span class="unit-price unit-price-{{item.ID}}"><span>${{item.PRICE}} each,</span> ${{item.PRICE * item.QUANTITY | number:2 }}</span>
 				<span ng-if="item.STATUS == 0"> 
-					<a type="button" class="pull-right" id="edit-price-btn-{{item.ID}}" style="margin-left:10px;font-size:12px;" ng-click="showPriceForm(item.ID)">
+					<a type="button" class="btn-edit-price pull-right" id="edit-price-btn-{{item.ID}}" ng-click="showPriceForm(item.ID)">
 						edit price
 					</a>
-					<a type="button" class="pull-right" id="close-price-btn-{{item.ID}}" style="margin-left:10px;font-size:12px;display:none;" ng-click="hidePriceForm(item.ID)">
+					<a type="button" class="btn-close-price pull-right" id="close-price-btn-{{item.ID}}" ng-click="hidePriceForm(item.ID)">
 						close
 					</a>
 				</span>
-				<form class="form-inline" name="itemPrice" id="form-{{item.ID}}" style="display:none;width:115px;">
+				<form class="form-inline form-change-price" name="itemPrice" id="form-{{item.ID}}">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input class="form-control" ng-model="priceInput" placeholder="{{item.PRICE}}" required />
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid" style="height:30px;">
+								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
 								</button>
 							</div>
@@ -78,13 +78,13 @@
 			</div>
 
 			<div ng-if="item.PRICE == null" class="pull-right">
-				<form class="form-inline" name="itemPrice" style="width:115px;">
+				<form class="form-inline form-add-price" name="itemPrice">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input type="hidden" value="{{item.STATUS}}" ng-checked="item.STATUS==2" />
 							<input class="form-control" ng-model="priceInput" placeholder="Price" required />
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); changeStatus(item.ID,item.STATUS,item.ITEM); priceInput = null;" ng-disabled="itemPrice.$invalid" style="height:30px;">
+								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); changeStatus(item.ID,item.STATUS,item.ITEM); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
 								</button>
 							</div>
