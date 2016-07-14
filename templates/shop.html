@@ -49,8 +49,44 @@
 			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
 
 			<div ng-if="item.PRICE != null" class="pull-right">
-				<a ng-click="updatePrice(item.ID)" class="pull-right" style="margin-left:10px;font-size:12px;">edit price</a>
+
+				<!-- #modal-{{item.ID}} -->
+				<div class="modal fade" id="modal-{{item.ID}}" tabindex="-1" role="dialog" aria-labelledby="modal{{item.ID}}Label">
+				  <div class="modal-dialog modal-sm" role="document">
+				    <div class="modal-content">
+							
+							<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">{{item.ITEM}}</h4>
+				      </div>
+				      <div class="modal-body">
+
+								Current price:<span style="color:#4CAF50;">{{item.PRICE | currency}}</span>
+
+				      	<form class="form-inline" name="itemPrice">
+									<div class="form-actions">
+										<div class="input-group input-group-sm">
+											<input class="form-control" ng-model="priceInput" placeholder="Price" required />
+											<div class="input-group-btn">
+												<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid" style="height:30px;">
+													Save
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
 				<span class="unit-price">${{item.PRICE}} / ${{item.PRICE * item.QUANTITY | number:2 }}</span>
+
+				<!-- Button trigger modal -->
+				<a type="button" class="pull-right" style="margin-left:10px;font-size:12px;" data-toggle="modal" data-target="#modal-{{item.ID}}">
+				  edit price
+				</a>
+
 			</div>
 			<div ng-if="item.PRICE == null" class="pull-right">
 				<form class="form-inline" name="itemPrice">

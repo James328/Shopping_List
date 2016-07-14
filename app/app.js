@@ -54,10 +54,11 @@ app.controller('shopController', function($scope, $http) {
         getItem();
         $scope.itemInput = "";
       });
+      $("#modal-"+item).modal("hide");
   };
 
-  $scope.updatePrice = function(item) {
-      $http.post("ajax/updatePrice.php?itemID="+item).success(function(data){
+  $scope.updatePrice = function(item, price) {
+      $http.post("ajax/updatePrice.php?itemID="+item+"&price="+price).success(function(data){
         getItem();
       });
   };
