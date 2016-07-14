@@ -4,12 +4,19 @@ var app = angular.module('shopApp', []);
 app.controller('shopController', function($scope, $http) {
 	
   getItem();      // Load all available items
+  getList();      // Load all shopping lists
   getSumPrice();  // Sum all of the prices
  
   function getItem(){  
   $http.post("ajax/getItem.php").success(function(data){
         $scope.items = data;
         getSumPrice();
+       });
+  };
+
+  function getList(){  
+  $http.post("ajax/getList.php").success(function(data){
+        $scope.lists = data;
        });
   };
 

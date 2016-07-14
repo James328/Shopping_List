@@ -1,0 +1,18 @@
+<section class="items">
+	<header class="items-header">
+		<h3>Saved Lists</h3>
+	</header>
+{{ist}}
+	<fieldset class="items-list">
+		<label class="items-list-item" ng-repeat="list in lists">
+			<input
+			type="checkbox"
+			value="{{list.ID}}"
+			ng-click="changeList()"
+			class="items-list-cb"/>
+			<span class="items-list-mark"></span>
+			{{list.ID}} {{list.NAME}} - {{list.CREATED_AT}}
+		</label>
+	</fieldset>
+
+</section>

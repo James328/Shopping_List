@@ -49,6 +49,8 @@
 				</span>
 			</span> 
 
+			<span style="padding-left:10px;color:#d0d0d0;">List ID: {{item.LIST_ID}}</span>
+
 			<a ng-click="deleteItem(item.ID)" class="pull-right red" style="margin-left:10px;"><i class="fa fa-minus-circle"></i></a> 
 
 			<div ng-if="item.PRICE != null" class="pull-right">
@@ -61,7 +63,7 @@
 						close
 					</a>
 				</span>
-				<form class="form-inline" name="itemPrice" id="form-{{item.ID}}" style="display:none;">
+				<form class="form-inline" name="itemPrice" id="form-{{item.ID}}" style="display:none;width:115px;">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input class="form-control" ng-model="priceInput" placeholder="{{item.PRICE}}" required />
@@ -76,7 +78,7 @@
 			</div>
 
 			<div ng-if="item.PRICE == null" class="pull-right">
-				<form class="form-inline" name="itemPrice">
+				<form class="form-inline" name="itemPrice" style="width:115px;">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input type="hidden" value="{{item.STATUS}}" ng-checked="item.STATUS==2" />
