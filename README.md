@@ -9,3 +9,5 @@ AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angula
 - [X] ~~Instead of tapping on the item in the shopping list to update status to complete, require that a price is entered in order to complete the item from the shopping list and move to the bottom of the list~~
 - [ ] Indexing / relational system to help cache items previously entered, and store historical data about the item with the timestamps and prices
 - [ ] Ability to create multiple shopping lists
+- [ ] Add notes to items purchased
+- [ ] Add photos to item purchased (ability to use camera on mobile device, no clue how hard this would be)
