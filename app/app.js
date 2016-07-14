@@ -42,7 +42,7 @@ app.controller('shopController', function($scope, $http) {
     }
   };  
 
-  $scope.changeStatus = function(item, status, task) {
+  $scope.changeStatus = function(item, status) {
     if(status=='2'){status='0';}else{status='2';}
       $http.post("ajax/updateItem.php?itemID="+item+"&status="+status).success(function(data){
         getItem();
