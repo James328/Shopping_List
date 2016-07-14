@@ -69,5 +69,19 @@ app.controller('shopController', function($scope, $http) {
       });
   };
 
+  $scope.showPriceForm = function(item) {
+      $("#form-"+item).css("display","inline-block");
+      $(".unit-price-"+item).css("display","none");
+      $("#edit-price-btn-"+item).css("display","none");
+      $("#close-price-btn-"+item).css("display","inline-block");
+  };
+
+   $scope.hidePriceForm = function(item) {
+      $("#form-"+item).css("display","none");
+      $(".unit-price-"+item).css("display","inline-block");
+      $("#edit-price-btn-"+item).css("display","inline-block");
+      $("#close-price-btn-"+item).css("display","none");
+  };
+
 
 });
