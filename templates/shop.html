@@ -51,6 +51,31 @@
 
 			</span> 
 
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#notesModal-{{item.ID}}">
+			  Notes
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="notesModal-{{item.ID}}" tabindex="-1" role="dialog" aria-labelledby="notesModal-{{item.ID}}">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="notesModal-{{item.ID}}">{{item.ITEM}} - Notes</h4>
+			      </div>
+			      <div class="modal-body">
+							{{item.NOTES}}
+			        <textarea class="form-control" rows="3" ng-model="notesInput">{{item.NOTES}}</textarea>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary" type="submit" ng-click="addNotes(item.ID,notesInput); notesInput == null;">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 			<!-- <span class="list-id">List ID: {{item.LIST_ID}}</span> -->
 
 			<a ng-click="deleteItem(item.ID)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
@@ -94,6 +119,8 @@
 					</div>
 				</form>
 			</div>
+
+			<div class="notes">{{item.NOTES}}</div>
 
 
 		</label>

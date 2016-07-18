@@ -61,7 +61,6 @@ app.controller('shopController', function($scope, $http) {
         getItem();
         $scope.itemInput = "";
       });
-      $("#modal-"+item).modal("hide");
   };
 
   $scope.increaseQuantity = function(item) {
@@ -90,5 +89,12 @@ app.controller('shopController', function($scope, $http) {
       $("#close-price-btn-"+item).css("display","none");
   };
 
+  $scope.addNotes = function (item, notes) {
+    $http.post("ajax/addNotes.php?itemID="+item+"&notes="+notes).success(function(data){
+        getItem();
+        $scope.notesInput = "";
+      });
+      $("#notesModal-"+item).modal("hide");
+  };
 
 });
