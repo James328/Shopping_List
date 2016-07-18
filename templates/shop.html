@@ -41,20 +41,22 @@
 			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">
 				{{item.ITEM}}
 				<span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;
-				<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}</span>
-		
-				<span ng-if="item.STATUS == 0"> 
-					<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
-					<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
+
+				<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}		
+					<span ng-if="item.STATUS == 0"> 
+						<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
+						<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
+					</span>
 				</span>
+
 			</span> 
 
-			<span class="list-id">List ID: {{item.LIST_ID}}</span>
+			<!-- <span class="list-id">List ID: {{item.LIST_ID}}</span> -->
 
 			<a ng-click="deleteItem(item.ID)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
 
-			<div ng-if="item.PRICE != null" class="pull-right">
-				<span class="unit-price unit-price-{{item.ID}}"><span>${{item.PRICE}} each,</span> ${{item.PRICE * item.QUANTITY | number:2 }}</span>
+			<div ng-if="item.PRICE != null" class="price pull-right">
+				<!-- <span class="unit-price unit-price-{{item.ID}}"><span>${{item.PRICE}} each,</span> --> ${{item.PRICE * item.QUANTITY | number:2 }}</span>
 				<span ng-if="item.STATUS == 0"> 
 					<a type="button" class="btn-edit-price pull-right" id="edit-price-btn-{{item.ID}}" ng-click="showPriceForm(item.ID)">
 						edit price
@@ -77,7 +79,7 @@
 				</form>
 			</div>
 
-			<div ng-if="item.PRICE == null" class="pull-right">
+			<div ng-if="item.PRICE == null" class="price pull-right">
 				<form class="form-inline form-add-price" name="itemPrice">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">

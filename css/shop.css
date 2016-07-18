@@ -8,12 +8,22 @@
 label {
   margin-bottom: 0;
 }
+@media (max-width: 767px) {
+  label {
+    clear: both;
+  }
+}
 
 body {
   font-family: 'Montserrat', sans-serif;
 
   color: #404040;
   background: #f2f2f2;
+}
+@media (max-width: 767px) {
+  .list {
+    display: none;
+  }
 }
 .items {
   width: 100%;
@@ -179,6 +189,11 @@ body {
 
   color: #ccc;
 }
+@media (max-width: 767px) {
+  .date {
+    display: none;
+  }
+}
 .red {
   opacity: .4;
   color: #900;
@@ -249,4 +264,3 @@ body {
 .form-change-price button {
   height: 30px;
 }
-
