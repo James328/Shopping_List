@@ -54,7 +54,7 @@
 			</span> 
 
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#notesModal-{{item.ID}}">
+			<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#notesModal-{{item.ID}}">
 			  Notes
 			</button>
 
@@ -69,6 +69,7 @@
 			      <div class="modal-body">
 							{{item.NOTES}}
 			        <textarea class="form-control" rows="3" ng-model="notesInput">{{item.NOTES}}</textarea>
+							<span id="helpBlock" class="help-block">Typing in the box above and clicking 'Save changes' will overwrite existing note for this item.</span>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
