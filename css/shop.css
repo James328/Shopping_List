@@ -96,12 +96,11 @@ body {
   display: block;
 
   padding: 12px 15px;
-
-  cursor: pointer;
+  /*cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
+          user-select: none;*/
 }
 .items-list-item:hover {
   background-color: #fafafa;
@@ -125,7 +124,12 @@ body {
   margin-top: 2px;
   margin-right: 5px;
 
-  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  /*vertical-align: top;*/
 
   border: 2px solid #c4cbd2;
   border-radius: 12px;

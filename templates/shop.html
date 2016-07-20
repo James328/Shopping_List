@@ -30,14 +30,16 @@
 	</header>
 
 	<fieldset class="items-list">
-		<label class="items-list-item" ng-repeat="item in items | filter : filterItem">
-			<input
-			type="checkbox"
-			value="{{item.STATUS}}"
-			ng-checked="item.STATUS==2"
-			ng-click="changeStatus(item.ID,item.STATUS,item.ITEM,item)"
-			class="items-list-cb"/>
-			<span class="items-list-mark"></span>
+		<div class="items-list-item" ng-repeat="item in items | filter : filterItem">
+			<label>
+				<input
+				type="checkbox"
+				value="{{item.STATUS}}"
+				ng-checked="item.STATUS==2"
+				ng-click="changeStatus(item.ID,item.STATUS,item.ITEM,item)"
+				class="items-list-cb"/>
+				<span class="items-list-mark"></span>
+			</label>
 			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">
 				{{item.ITEM}}
 				<span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;
@@ -123,7 +125,7 @@
 			<div ng-if="item.STATUS != 2" class="notes">{{item.NOTES}}</div>
 
 
-		</label>
+		</div>
 	</fieldset>	
 
 </section>
