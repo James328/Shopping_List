@@ -4,16 +4,12 @@
 	</header>
 
 	<fieldset class="items-list">
-		<label class="items-list-item" ng-repeat="list in lists">
-			<input
-			type="checkbox"
-			value="{{list.ID}}"
-			ng-click="changeList()"
-			class="items-list-cb"/>
-			<span class="items-list-mark"></span>
-			{{list.NAME}} - ID: {{list.ID}}
-			<span class="date">[{{list.CREATED_AT | date:"MMM d"}}]</span>
-		</label>
+		<div class="items-list-item" ng-repeat="list in lists">
+
+		<button ng-click="changeList(list.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity">
+		{{list.NAME}} - ID: {{list.ID}}
+		<span class="date">[{{list.CREATED_AT | date:"MMM d"}}]</span></button>
+		
 	</fieldset>
 
 </section>

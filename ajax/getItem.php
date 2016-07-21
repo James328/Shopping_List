@@ -22,7 +22,15 @@ if($result->num_rows > 0) {
 
 $active_list = $arr[0]['active_list'];
 
-$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE, LIST_ID, NOTES from shop where LIST_ID='$active_list' order by status,id desc, quantity asc";
+if($active_list == '1')
+{
+	$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE, LIST_ID, NOTES from shop order by status,id desc, quantity asc";
+}
+else
+{
+	$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE, LIST_ID, NOTES from shop where LIST_ID='$active_list' order by status,id desc, quantity asc";
+}
+
 //$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE, LIST_ID, NOTES from shop where status like '$status' order by status,id desc, quantity asc";
 
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);

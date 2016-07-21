@@ -5,6 +5,7 @@ app.controller('shopController', function($scope, $http) {
 	
   getItem();      // Load all available items
   getList();      // Load all shopping lists
+  getUser();      // Load user info
   getSumPrice();  // Sum all of the prices
  
   function getItem(){  
@@ -18,6 +19,12 @@ app.controller('shopController', function($scope, $http) {
   $http.post("ajax/getList.php").success(function(data){
         $scope.lists = data;
        });
+  };
+
+  function getUser(){
+  $http.post("ajax/getUser.php").success(function(data){
+      $scope.users = data;
+     });
   };
 
   function getSumPrice(){
@@ -52,6 +59,12 @@ app.controller('shopController', function($scope, $http) {
   $scope.changeStatus = function(item, status) {
     if(status=='2'){status='0';}else{status='2';}
       $http.post("ajax/updateItem.php?itemID="+item+"&status="+status).success(function(data){
+        getItem();
+      });
+  };
+
+  $scope.changeList = function(list) {
+      $http.post("ajax/updateList.php?list="+list).success(function(data){
         getItem();
       });
   };
