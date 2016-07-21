@@ -5,7 +5,6 @@ app.controller('shopController', function($scope, $http) {
 	
   getItem();      // Load all available items
   getList();      // Load all shopping lists
-  getUser();      // Load user info
   getSumPrice();  // Sum all of the prices
  
   function getItem(){  
@@ -19,12 +18,6 @@ app.controller('shopController', function($scope, $http) {
   $http.post("ajax/getList.php").success(function(data){
         $scope.lists = data;
        });
-  };
-
-  function getUser(){
-  $http.post("ajax/getUser.php").success(function(data){
-      $scope.users = data;
-     });
   };
 
   function getSumPrice(){
