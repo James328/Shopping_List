@@ -6,12 +6,11 @@ if(isset($_GET['status']))
 	$status = $mysqli->real_escape_string($_GET['status']);
 }
 
-$id = '1';	// manually setting the user ID for now, which also means
+$user_id = '1';	// manually setting the user ID for now, which also means
 						// $active_list is manually set in db, currently == 1
 
 // pulling the active_list
-$query="SELECT ID, ACTIVE_LIST as active_list from user where id='$id'";
-
+$query="SELECT ID, ACTIVE_LIST as active_list from user where id='$user_id'";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();
