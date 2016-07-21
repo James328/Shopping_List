@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 21, 2016 at 04:42 AM
+-- Generation Time: Jul 21, 2016 at 05:27 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -32,9 +32,10 @@ CREATE TABLE `list` (
 --
 
 INSERT INTO `list` (`id`, `name`, `created_at`, `status`) VALUES
-(1, 'Grocery list', '2016-07-14', 0),
-(2, 'Hardware store', '2016-07-12', 0),
-(3, 'Other', '2016-07-14', 0);
+(1, 'Show All', '2016-07-14', 0),
+(2, 'Grocery Store', '2016-07-12', 0),
+(3, 'Hardware Store', '2016-07-14', 0),
+(4, 'Other', '2016-07-20', 0);
 
 -- --------------------------------------------------------
 
@@ -59,13 +60,13 @@ CREATE TABLE `shop` (
 --
 
 INSERT INTO `shop` (`id`, `item`, `status`, `created_at`, `quantity`, `price`, `price_type`, `list_id`, `notes`) VALUES
-(15, 'Bread', 0, '2015-05-13', 1, '5.00', 0, 1, ''),
-(24, 'Apples', 0, '2016-06-29', 4, '1.99', 0, NULL, ''),
-(25, 'Oranges', 0, '2016-06-29', 4, '1.00', 2, 1, ''),
-(26, 'Pears', 2, '2016-06-29', 3, '0.89', 2, NULL, ''),
-(27, 'Beer', 0, '2016-06-29', 1, '5.99', 2, 1, 'Fat tire pls'),
-(30, 'Strawberries', 0, '2016-07-20', 3, NULL, NULL, NULL, ''),
-(31, 'Eggs', 0, '2016-07-20', 1, NULL, NULL, 1, 'Make sure to get the large size');
+(15, 'Bread', 0, '2015-05-13', 1, '5.00', 0, 2, ''),
+(24, 'Hammer', 0, '2016-06-29', 1, '5.99', 0, 3, ''),
+(25, 'Oranges', 0, '2016-06-29', 4, '1.00', 2, 2, ''),
+(26, 'Nails', 0, '2016-06-29', 3, '0.89', 2, 3, ''),
+(27, 'Beer', 0, '2016-06-29', 1, '5.99', 2, 2, 'Fat tire pls'),
+(30, 'Prescriptions', 0, '2016-07-20', 3, NULL, NULL, 4, ''),
+(31, 'Eggs', 0, '2016-07-20', 1, NULL, NULL, 2, 'Make sure to get the large size');
 
 -- --------------------------------------------------------
 
