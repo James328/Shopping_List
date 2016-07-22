@@ -33,6 +33,13 @@ app.controller('shopController', function($scope, $http) {
       });
   };
 
+  $scope.addList = function (list) {
+    $http.post("ajax/addList.php?list="+list).success(function(data){
+        getList();
+        $scope.listInput = "";
+      });
+  };
+
   $scope.deleteItem = function (item) {
     if(confirm("Are you sure to delete this item?")){
     $http.post("ajax/deleteItem.php?itemID="+item).success(function(data){
