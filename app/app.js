@@ -48,6 +48,14 @@ app.controller('shopController', function($scope, $http) {
     }
   };
 
+  $scope.deleteList = function (list) {
+    if(confirm("Are you sure to delete this item?")){
+    $http.post("ajax/deleteList.php?listID="+list).success(function(data){
+        getList();
+      });
+    }
+  };
+
   $scope.clearItem = function () {
     if(confirm("Delete all checked items?")){
     $http.post("ajax/clearItem.php").success(function(data){
