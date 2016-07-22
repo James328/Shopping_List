@@ -224,11 +224,21 @@ body {
 .unit-price span {
   color: #d0d0d0;
 }
-
-/* buttons */
-.btn-info {
-  height: 68px;
+input.input-item {
+  width: 70%!important;
 }
+input.input-quantity {
+  width: 30%!important;
+}
+@media (max-width: 767px) {
+  input.input-item {
+    width: 60%!important;
+  }
+  input.input-quantity {
+    width: 40%!important;
+  }
+}
+/* buttons */
 .btn-increase-quantity {
   margin-left: 10px;
   padding: 5px 7px;

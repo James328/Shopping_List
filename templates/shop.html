@@ -8,12 +8,12 @@
 					<div class="form-actions">
 						<div class="input-group">
 
-							<input type="text" class="form-control" ng-model="itemInput" placeholder="Add New Item" autofocus required />
-							<input class="form-control" ng-model="quantityInput" placeholder="Quantity" />
+							<input type="text" class="form-control input-item" ng-model="itemInput" placeholder="Add New Item" autofocus required />
+							<input class="form-control input-quantity" ng-model="quantityInput" placeholder="Quantity" />
 			
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null;" ng-disabled="shopList.$invalid">
-									<i class="fa fa-plus"></i>&nbsp;Add Item
+									<i class="fa fa-plus"></i>&nbsp;Item
 								</button>
 							</div>
 						</div>
