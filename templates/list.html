@@ -2,19 +2,19 @@
 	<header class="items-header">
 		<h3>Saved Lists</h3>
 		<form class="form-inline" name="shopAddList">
-					<div class="form-actions">
-						<div class="input-group">
+			<div class="form-actions">
+				<div class="input-group">
 
-							<input type="text" class="form-control" ng-model="listInput" placeholder="Add New Item" autofocus required />
-			
-							<div class="input-group-btn">
-								<button class="btn btn-info" style="height:auto;" type="submit" ng-click="addList(listInput); listInput = null;" ng-disabled="shopAddList.$invalid">
-									<i class="fa fa-plus"></i>&nbsp;Add
-								</button>
-							</div>
-						</div>
+					<input type="text" class="form-control" ng-model="listInput" placeholder="Add New Item" autofocus required />
+
+					<div class="input-group-btn">
+						<button class="btn btn-info" style="height:auto;" type="submit" ng-click="addList(listInput); listInput = null;" ng-disabled="shopAddList.$invalid">
+							<i class="fa fa-plus"></i>&nbsp;Add
+						</button>
 					</div>
-				</form>
+				</div>
+			</div>
+		</form>
 	</header>
 
 	<fieldset class="items-list">
