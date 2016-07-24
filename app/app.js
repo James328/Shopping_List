@@ -85,13 +85,13 @@ app.controller('shopController', function($scope, $http) {
       $scope.itemInput = "";
     });
   };
-  $scope.increaseQuantity = function(item) {
-    $http.post("ajax/increaseQuantity.php?itemID="+item).success(function(data){
+  $scope.increaseQuantity = function(item_id) {
+    $http.post("ajax/increaseQuantity.php?itemID="+item_id).success(function(data){
       getItem();
     });
   };
-  $scope.decreaseQuantity = function(item) {
-    $http.post("ajax/decreaseQuantity.php?itemID="+item).success(function(data){
+  $scope.decreaseQuantity = function(item_id) {
+    $http.post("ajax/decreaseQuantity.php?itemID="+item_id).success(function(data){
       getItem();
     });
   };
