@@ -11,6 +11,7 @@ Requires PHP / MySQL, I'm using [MAMP](https://www.mamp.info/en/) to work locall
 
 ## To Do List / Ideas
 - [ ] User authentication
+- [ ] Unit / build testing
 - [ ] Indexing / relational system to help cache items previously entered, and store historical data about the item with the timestamps and prices
 - [ ] Ability to create multiple shopping lists
 - [ ] Add photos to item purchased (ability to use camera on mobile device, no clue how hard this would be)
@@ -19,6 +20,6 @@ Requires PHP / MySQL, I'm using [MAMP](https://www.mamp.info/en/) to work locall
 - [X] ~~Instead of tapping on the item in the shopping list to update status to complete, require that a price is entered in order to complete the item from the shopping list and move to the bottom of the list~~
 - [X] ~~Add notes to items purchased~~
 
-## Notes
+## shop.sql EER Diagram
 Current database EER model (MySQL Workbench files = shop.mwb) [work in progress]:
 ![ScreenShot](https://raw.github.com/James328/Shopping_List/master/shop_db.png)
