@@ -42,6 +42,52 @@ app.controller('shopController', function($scope, $http) {
     });
   };
 
+  //Quantity functions
+  $scope.increaseQuantity = function(item_id) {
+    $http.post("ajax/increaseQuantity.php?itemID="+item_id).success(function(data){
+      getItem();
+    });
+  };
+  $scope.decreaseQuantity = function(item_id) {
+    $http.post("ajax/decreaseQuantity.php?itemID="+item_id).success(function(data){
+      getItem();
+    });
+  };
+
+  // Price functions
+  function getSumPrice(){
+    $http.post("ajax/getSumPrice.php").success(function(data){
+      $scope.sumPrice = data;
+    });
+  };
+  $scope.addPrice = function (item_id, price) {
+    $http.post("ajax/addPrice.php?itemID="+item_id+"&price="+price).success(function(data){
+      getItem();
+      $scope.itemInput = "";
+    });
+  };
+  $scope.showPriceForm = function(item_id) {
+    $("#form-"+item_id).css("display","inline-block");
+    $(".unit-price-"+item_id).css("display","none");
+    $("#edit-price-btn-"+item_id).css("display","none");
+    $("#close-price-btn-"+item_id).css("display","inline-block");
+  };
+  $scope.hidePriceForm = function(item_id) {
+    $("#form-"+item_id).css("display","none");
+    $(".unit-price-"+item_id).css("display","inline-block");
+    $("#edit-price-btn-"+item_id).css("display","inline-block");
+    $("#close-price-btn-"+item_id).css("display","none");
+  };
+
+  // Notes functions
+  $scope.addNotes = function (item, notes) {
+    $http.post("ajax/addNotes.php?itemID="+item+"&notes="+notes).success(function(data){
+      getItem();
+      $scope.notesInput = "";
+    });
+    $("#notesModal-"+item).modal("hide");
+  };
+
   // List functions
   function getList(){  
     $http.post("ajax/getList.php").success(function(data){
@@ -72,49 +118,4 @@ app.controller('shopController', function($scope, $http) {
       getCurrentList();
     });
   };
-
-  // Price functions
-  function getSumPrice(){
-    $http.post("ajax/getSumPrice.php").success(function(data){
-      $scope.sumPrice = data;
-    });
-  };
-  $scope.addPrice = function (item_id, price) {
-    $http.post("ajax/addPrice.php?itemID="+item_id+"&price="+price).success(function(data){
-      getItem();
-      $scope.itemInput = "";
-    });
-  };
-  $scope.increaseQuantity = function(item_id) {
-    $http.post("ajax/increaseQuantity.php?itemID="+item_id).success(function(data){
-      getItem();
-    });
-  };
-  $scope.decreaseQuantity = function(item_id) {
-    $http.post("ajax/decreaseQuantity.php?itemID="+item_id).success(function(data){
-      getItem();
-    });
-  };
-  $scope.showPriceForm = function(item_id) {
-    $("#form-"+item_id).css("display","inline-block");
-    $(".unit-price-"+item_id).css("display","none");
-    $("#edit-price-btn-"+item_id).css("display","none");
-    $("#close-price-btn-"+item_id).css("display","inline-block");
-  };
-  $scope.hidePriceForm = function(item_id) {
-    $("#form-"+item_id).css("display","none");
-    $(".unit-price-"+item_id).css("display","inline-block");
-    $("#edit-price-btn-"+item_id).css("display","inline-block");
-    $("#close-price-btn-"+item_id).css("display","none");
-  };
-
-  // Notes functions
-  $scope.addNotes = function (item, notes) {
-    $http.post("ajax/addNotes.php?itemID="+item+"&notes="+notes).success(function(data){
-      getItem();
-      $scope.notesInput = "";
-    });
-    $("#notesModal-"+item).modal("hide");
-  };
-
 });
