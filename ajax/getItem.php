@@ -11,10 +11,9 @@ $user_id = '1';	// manually setting the user ID for now, which also means
 
 // pulling the active_list
 $query="
-		SELECT ID, ACTIVE_LIST 
-		AS active_list 
+		SELECT user_id, active_list
 		FROM user 
-		WHERE id='$user_id'";
+		WHERE user_id='$user_id'";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();

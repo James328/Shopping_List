@@ -6,9 +6,9 @@ $user_id = '1';	// manually setting the user ID for now, which also means
 
 // pulling the active_list
 $query="
-		SELECT ID, ACTIVE_LIST 
-		AS active_list 
-		FROM user WHERE id='$user_id'";
+		SELECT user_id, active_list 
+		FROM user 
+		WHERE user_id='$user_id'";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();
@@ -23,17 +23,17 @@ $active_list = $arr[0]['active_list'];
 if($active_list == '1')
 {
 	$query="
-		SELECT SUM(PRICE * QUANTITY) 
+		SELECT SUM(price * quantity) 
 		AS PRICE 
 		FROM item";
 }
 else
 {
 	$query="
-		SELECT SUM(PRICE * QUANTITY) 
-		AS PRICE 
+		SELECT SUM(price * quantity) 
+		AS price 
 		FROM item 
-		WHERE LIST_ID='$active_list'";
+		WHERE list_id='$active_list'";
 }
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 

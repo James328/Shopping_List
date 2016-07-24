@@ -8,7 +8,7 @@ if(isset($_GET['itemID']) && isset($_GET['price']))
 	$query="
 		UPDATE item 
 		SET price='$price' 
-		WHERE id='$itemID'";
+		WHERE item_id='$itemID'";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$result = $mysqli->affected_rows;

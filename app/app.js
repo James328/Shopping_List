@@ -79,8 +79,8 @@ app.controller('shopController', function($scope, $http) {
       $scope.sumPrice = data;
     });
   };
-  $scope.addPrice = function (item, price) {
-    $http.post("ajax/addPrice.php?itemID="+item+"&price="+price).success(function(data){
+  $scope.addPrice = function (item_id, price) {
+    $http.post("ajax/addPrice.php?itemID="+item_id+"&price="+price).success(function(data){
       getItem();
       $scope.itemInput = "";
     });
