@@ -24,7 +24,7 @@ if($active_list == '1')
 {
 	$query="
 		SELECT SUM(price * quantity) 
-		AS PRICE 
+		AS price 
 		FROM item";
 }
 else
