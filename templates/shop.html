@@ -40,7 +40,7 @@
 			</label>
 			<span class="items-list-desc" ng-class="{strike:item.status==2}">
 				{{item.name}}
-				<span class="date">[{{item.created_at | date:"MMM d"}}]</span>&nbsp;
+				<span class="date" style="display:none;">[{{item.created_at | date:"MMM d"}}]</span>&nbsp;
 
 				<span class="quantity"><i class="fa fa-times"></i>{{item.quantity}}		
 					<span ng-if="item.status == 0"> 
