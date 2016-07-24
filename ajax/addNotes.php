@@ -2,7 +2,7 @@
 require_once '../includes/db.php'; // The mysql database connection script
 if(isset($_GET['itemID']))
 {
-	$itemID = $mysqli->real_escape_string($_GET['itemID']);
+	$item_id = $mysqli->real_escape_string($_GET['itemID']);
 
 	if(isset($_GET['notes'])){
 		$notes = $mysqli->real_escape_string($_GET['notes']);
@@ -11,7 +11,7 @@ if(isset($_GET['itemID']))
 	$query="
 		UPDATE item 
 		SET notes='$notes' 
-		WHERE id='$itemID'";
+		WHERE item_id='$item_id'";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$result = $mysqli->affected_rows;

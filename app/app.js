@@ -80,12 +80,12 @@ app.controller('shopController', function($scope, $http) {
   };
 
   // Notes functions
-  $scope.addNotes = function (item, notes) {
-    $http.post("ajax/addNotes.php?itemID="+item+"&notes="+notes).success(function(data){
+  $scope.addNotes = function (item_id, notes) {
+    $http.post("ajax/addNotes.php?itemID="+item_id+"&notes="+notes).success(function(data){
       getItem();
       $scope.notesInput = "";
     });
-    $("#notesModal-"+item).modal("hide");
+    $("#notesModal-"+item_id).modal("hide");
   };
 
   // List functions
