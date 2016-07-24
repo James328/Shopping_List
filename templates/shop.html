@@ -32,71 +32,71 @@
 			<label>
 				<input
 				type="checkbox"
-				value="{{item.STATUS}}"
-				ng-checked="item.STATUS==2"
-				ng-click="changeStatus(item.ID,item.STATUS,item.ITEM,item)"
+				value="{{item.status}}"
+				ng-checked="item.status==2"
+				ng-click="changeStatus(item.item_id,item.status,item.name,item)"
 				class="items-list-cb"/>
 				<span class="items-list-mark"></span>
 			</label>
-			<span class="items-list-desc" ng-class="{strike:item.STATUS==2}">
-				{{item.ITEM}}
-				<span class="date">[{{item.CREATED_AT | date:"MMM d"}}]</span>&nbsp;
+			<span class="items-list-desc" ng-class="{strike:item.status==2}">
+				{{item.name}}
+				<span class="date">[{{item.created_at | date:"MMM d"}}]</span>&nbsp;
 
-				<span class="quantity"><i class="fa fa-times"></i>{{item.QUANTITY}}		
-					<span ng-if="item.STATUS == 0"> 
-						<button ng-click="increaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
-						<button ng-click="decreaseQuantity(item.ID)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
+				<span class="quantity"><i class="fa fa-times"></i>{{item.quantity}}		
+					<span ng-if="item.status == 0"> 
+						<button ng-click="increaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
+						<button ng-click="decreaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
 					</span>
 				</span>
 
 			</span> 
 
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#notesModal-{{item.ID}}">
+			<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#notesModal-{{item.item_id}}">
 			  Notes
 			</button>
 
 			<!-- Modal -->
-			<div class="modal fade" id="notesModal-{{item.ID}}" tabindex="-1" role="dialog" aria-labelledby="notesModal-{{item.ID}}">
+			<div class="modal fade" id="notesModal-{{item.item_id}}" tabindex="-1" role="dialog" aria-labelledby="notesModal-{{item.item_id}}">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="notesModal-{{item.ID}}">{{item.ITEM}} - Notes</h4>
+			        <h4 class="modal-title" id="notesModal-{{item.item_id}}">{{item.name}} - Notes</h4>
 			      </div>
 			      <div class="modal-body">
-							{{item.NOTES}}
-			        <textarea class="form-control" rows="3" ng-model="notesInput">{{item.NOTES}}</textarea>
+							{{item.notes}}
+			        <textarea class="form-control" rows="3" ng-model="notesInput">{{item.notes}}</textarea>
 							<span id="helpBlock" class="help-block">Typing in the box above and clicking 'Save changes' will overwrite existing note for this item.</span>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" type="submit" ng-click="addNotes(item.ID,notesInput); notesInput == null;">Save changes</button>
+			        <button type="button" class="btn btn-primary" type="submit" ng-click="addNotes(item.item_id,notesInput); notesInput == null;">Save changes</button>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 
-			<span class="list-id">List ID: {{item.LIST_ID}}</span>
+			<span class="list-id">List ID: {{item.list_id}}</span>
 
-			<a ng-click="deleteItem(item.ID)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
+			<a ng-click="deleteItem(item.item_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
 
-			<div ng-if="item.PRICE != null" class="price pull-right">
-				<!-- <span class="unit-price unit-price-{{item.ID}}"><span>${{item.PRICE}} each,</span> --> ${{item.PRICE * item.QUANTITY | number:2 }}</span>
-				<span ng-if="item.STATUS == 0"> 
-					<a type="button" class="btn-edit-price pull-right" id="edit-price-btn-{{item.ID}}" ng-click="showPriceForm(item.ID)">
+			<div ng-if="item.price != null" class="price pull-right">
+				<!-- <span class="unit-price unit-price-{{item.item_id}}"><span>${{item.price}} each,</span> --> ${{item.price * item.quantity | number:2 }}</span>
+				<span ng-if="item.status == 0"> 
+					<a type="button" class="btn-edit-price pull-right" id="edit-price-btn-{{item.item_id}}" ng-click="showPriceForm(item.item_id)">
 						edit price
 					</a>
-					<a type="button" class="btn-close-price pull-right" id="close-price-btn-{{item.ID}}" ng-click="hidePriceForm(item.ID)">
+					<a type="button" class="btn-close-price pull-right" id="close-price-btn-{{item.item_id}}" ng-click="hidePriceForm(item.item_id)">
 						close
 					</a>
 				</span>
-				<form class="form-inline form-change-price" name="itemPrice" id="form-{{item.ID}}">
+				<form class="form-inline form-change-price" name="itemPrice" id="form-{{item.item_id}}">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
-							<input class="form-control" ng-model="priceInput" placeholder="{{item.PRICE}}" required />
+							<input class="form-control" ng-model="priceInput" placeholder="{{item.price}}" required />
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid">
+								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
 								</button>
 							</div>
@@ -105,14 +105,14 @@
 				</form>
 			</div>
 
-			<div ng-if="item.PRICE == null" class="price pull-right">
+			<div ng-if="item.price == null" class="price pull-right">
 				<form class="form-inline form-add-price" name="itemPrice">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
-							<input type="hidden" value="{{item.STATUS}}" ng-checked="item.STATUS==2" />
+							<input type="hidden" value="{{item.status}}" ng-checked="item.status==2" />
 							<input class="form-control" ng-model="priceInput" placeholder="Price" required />
 							<div class="input-group-btn">
-								<button class="btn btn-info" type="submit" ng-click="addPrice(item.ID,priceInput); changeStatus(item.ID,item.STATUS,item.ITEM); priceInput = null;" ng-disabled="itemPrice.$invalid">
+								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); changeStatus(item.item_id,item.status,item.name); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
 								</button>
 							</div>
@@ -121,7 +121,7 @@
 				</form>
 			</div>
 
-			<div ng-if="item.STATUS != 2" class="notes">{{item.NOTES}}</div>
+			<div ng-if="item.status != 2" class="notes">{{item.notes}}</div>
 
 
 		</div>

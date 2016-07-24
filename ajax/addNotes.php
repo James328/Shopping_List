@@ -8,7 +8,10 @@ if(isset($_GET['itemID']))
 		$notes = $mysqli->real_escape_string($_GET['notes']);
 	}
 
-	$query="UPDATE shop set notes='$notes' where id='$itemID'";
+	$query="
+		UPDATE item 
+		SET notes='$notes' 
+		WHERE id='$itemID'";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$result = $mysqli->affected_rows;

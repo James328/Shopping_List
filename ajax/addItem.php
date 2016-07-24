@@ -1,8 +1,8 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
-if(isset($_GET['item']))
+if(isset($_GET['name']))
 {
-	$item = $mysqli->real_escape_string($_GET['item']);
+	$name = $mysqli->real_escape_string($_GET['name']);
 	$status = "0";
 	$created = date("Y-m-d", strtotime("now"));
 
@@ -12,7 +12,9 @@ if(isset($_GET['item']))
 	}
 	if($quantity == undefined){ $quantity = "1"; } // Make sure $quantity is > 0
 
-	$query="INSERT INTO shop(item,status,created_at,quantity)  VALUES ('$item', '$status', '$created', '$quantity')";
+	$query="
+		INSERT INTO item(name,status,created_at,quantity)
+		VALUES ('$name', '$status', '$created', '$quantity')";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 

@@ -15,15 +15,15 @@ app.controller('shopController', function($scope, $http) {
       getSumPrice();
     });
   };
-  $scope.addItem = function (item, quantity) {
-    $http.post("ajax/addItem.php?item="+item+"&quantity="+quantity).success(function(data){
+  $scope.addItem = function (name, quantity) {
+    $http.post("ajax/addItem.php?name="+name+"&quantity="+quantity).success(function(data){
       getItem();
       $scope.itemInput = "";
     });
   };
-  $scope.deleteItem = function (item) {
+  $scope.deleteItem = function (item_id) {
     if(confirm("Are you sure to delete this item?")){
-      $http.post("ajax/deleteItem.php?itemID="+item).success(function(data){
+      $http.post("ajax/deleteItem.php?itemID="+item_id).success(function(data){
         getItem();
       });
     }
@@ -35,9 +35,9 @@ app.controller('shopController', function($scope, $http) {
       });
     }
   };
-  $scope.changeStatus = function(item, status) {
+  $scope.changeStatus = function(item_id, status) {
     if(status=='2'){status='0';}else{status='2';}
-    $http.post("ajax/updateItem.php?itemID="+item+"&status="+status).success(function(data){
+    $http.post("ajax/updateItem.php?itemID="+item_id+"&status="+status).success(function(data){
       getItem();
     });
   };
