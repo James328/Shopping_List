@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 24, 2016 at 07:18 AM
+-- Generation Time: Jul 24, 2016 at 08:04 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -31,7 +31,7 @@ CREATE TABLE `item` (
   `price` decimal(4,2) DEFAULT NULL,
   `price_type` int(11) DEFAULT NULL,
   `notes` longtext COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
@@ -79,7 +79,7 @@ INSERT INTO `list` (`list_id`, `user_id`, `name`, `created_at`, `status`) VALUES
 
 CREATE TABLE `user` (
   `user_id` mediumint(8) unsigned NOT NULL,
-  `active_list` int(11) NOT NULL,
+  `active_list` mediumint(8) unsigned NOT NULL,
   `first_name` varchar(20) NOT NULL DEFAULT '',
   `last_name` varchar(40) NOT NULL DEFAULT '',
   `email` varchar(60) NOT NULL DEFAULT '',
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `active_list`, `first_name`, `last_name`, `email`, `pass`, `registration_date`) VALUES
-(1, 1, 'James', 'Hume', 'james@hume.com', '1234', '2016-07-24 05:05:06');
+(1, 1, 'James', 'Hume', 'james@hume.com', '1234', '2016-07-24 05:41:25');
 
 --
 -- Indexes for dumped tables
@@ -116,7 +116,8 @@ ALTER TABLE `list`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_active_list` (`active_list`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -126,7 +127,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `item_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `list`
 --
@@ -152,3 +153,9 @@ ALTER TABLE `item`
 --
 ALTER TABLE `list`
   ADD CONSTRAINT `list_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_active_list` FOREIGN KEY (`active_list`) REFERENCES `list` (`list_id`);
