@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 24, 2016 at 09:38 AM
+-- Generation Time: Jul 24, 2016 at 09:56 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -55,20 +55,19 @@ CREATE TABLE `list` (
   `list_id` mediumint(8) unsigned NOT NULL,
   `user_id` mediumint(8) unsigned NOT NULL,
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int(11) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `list`
 --
 
-INSERT INTO `list` (`list_id`, `user_id`, `name`, `created_at`, `status`) VALUES
-(1, 1, 'Show All', '2016-07-24 04:26:02', 0),
-(2, 1, 'Grocery Store', '2016-07-24 04:26:03', 0),
-(3, 1, 'Hardware Store', '2016-07-24 04:26:04', 0),
-(4, 1, 'Other', '2016-07-24 04:26:05', 0),
-(9, 1, 'Test', '2016-07-24 04:26:06', 0);
+INSERT INTO `list` (`list_id`, `user_id`, `name`, `created_at`) VALUES
+(1, 0, 'Show All', '2016-07-24 04:26:02'),
+(2, 0, 'Grocery Store', '2016-07-24 04:26:03'),
+(3, 0, 'Hardware Store', '2016-07-24 04:26:04'),
+(4, 0, 'Other', '2016-07-24 04:26:05'),
+(9, 0, 'Test', '2016-07-24 04:26:06');
 
 -- --------------------------------------------------------
 
@@ -83,27 +82,28 @@ CREATE TABLE `user` (
   `last_name` varchar(40) NOT NULL DEFAULT '',
   `email` varchar(60) NOT NULL DEFAULT '',
   `pass` char(40) NOT NULL DEFAULT '',
-  `registration_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `active_list`, `first_name`, `last_name`, `email`, `pass`, `registration_date`) VALUES
+INSERT INTO `user` (`user_id`, `active_list`, `first_name`, `last_name`, `email`, `pass`, `created_at`) VALUES
 (1, 1, 'James', 'Hume', 'james@hume.com', '1234', '2016-07-24 07:34:38');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_item`
+-- Table structure for table `user_item_list`
 --
 
-CREATE TABLE `user_item` (
-  `user_item_id` mediumint(8) unsigned NOT NULL,
+CREATE TABLE `user_item_list` (
+  `uil_id` mediumint(8) unsigned NOT NULL,
   `user_id` mediumint(8) unsigned NOT NULL,
   `item_id` mediumint(8) unsigned NOT NULL,
-  `list_id` mediumint(8) unsigned NOT NULL
+  `list_id` mediumint(8) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,8 +122,7 @@ ALTER TABLE `item`
 -- Indexes for table `list`
 --
 ALTER TABLE `list`
-  ADD PRIMARY KEY (`list_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`list_id`);
 
 --
 -- Indexes for table `user`
@@ -133,10 +132,10 @@ ALTER TABLE `user`
   ADD KEY `user_active_list` (`active_list`);
 
 --
--- Indexes for table `user_item`
+-- Indexes for table `user_item_list`
 --
-ALTER TABLE `user_item`
-  ADD PRIMARY KEY (`user_item_id`),
+ALTER TABLE `user_item_list`
+  ADD PRIMARY KEY (`uil_id`),
   ADD KEY `user_item_user` (`user_id`),
   ADD KEY `user_item_item` (`item_id`),
   ADD KEY `user_item_list` (`list_id`);
@@ -161,18 +160,18 @@ ALTER TABLE `list`
 ALTER TABLE `user`
   MODIFY `user_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `user_item`
+-- AUTO_INCREMENT for table `user_item_list`
 --
-ALTER TABLE `user_item`
-  MODIFY `user_item_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_item_list`
+  MODIFY `uil_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `user_item`
+-- Constraints for table `user_item_list`
 --
-ALTER TABLE `user_item`
-  ADD CONSTRAINT `user_item_list` FOREIGN KEY (`list_id`) REFERENCES `list` (`list_id`),
+ALTER TABLE `user_item_list`
   ADD CONSTRAINT `user_item_item` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`),
+  ADD CONSTRAINT `user_item_list` FOREIGN KEY (`list_id`) REFERENCES `list` (`list_id`),
   ADD CONSTRAINT `user_item_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
