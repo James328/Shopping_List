@@ -20,11 +20,10 @@
 	<fieldset class="items-list">
 		<div class="items-list-item" ng-repeat="list in lists">
 
-		<a ng-click="deleteList(list.ID)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
+		<a ng-click="deleteList(list.list_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
 
-		<button ng-click="changeList(list.ID)" type="button" class="btn btn-sm btn-default btn-increase-quantity">
-		{{list.NAME}} - ID: {{list.ID}}
-		<span class="date">[{{list.CREATED_AT | date:"MMM d"}}]</span></button>
+		<button ng-click="changeList(list.list_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity">
+		{{list.name}} - ID: {{list.list_id}}
 		
 	</fieldset>
 

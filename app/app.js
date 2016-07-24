@@ -53,21 +53,21 @@ app.controller('shopController', function($scope, $http) {
       $scope.currentList = data;
     });
   };
-  $scope.addList = function (list) {
-    $http.post("ajax/addList.php?list="+list).success(function(data){
+  $scope.addList = function (list_name) {
+    $http.post("ajax/addList.php?listName="+list_name).success(function(data){
       getList();
       $scope.listInput = "";
     });
   };
-  $scope.deleteList = function (list) {
+  $scope.deleteList = function (list_id) {
     if(confirm("Are you sure to delete this item?")){
-      $http.post("ajax/deleteList.php?listID="+list).success(function(data){
+      $http.post("ajax/deleteList.php?listID="+list_id).success(function(data){
         getList();
       });
     }
   };
-  $scope.changeList = function(list) {
-    $http.post("ajax/updateList.php?list="+list).success(function(data){
+  $scope.changeList = function(list_id) {
+    $http.post("ajax/updateList.php?listID="+list_id).success(function(data){
       getItem();
       getCurrentList();
     });
@@ -95,17 +95,17 @@ app.controller('shopController', function($scope, $http) {
       getItem();
     });
   };
-  $scope.showPriceForm = function(item) {
-    $("#form-"+item).css("display","inline-block");
-    $(".unit-price-"+item).css("display","none");
-    $("#edit-price-btn-"+item).css("display","none");
-    $("#close-price-btn-"+item).css("display","inline-block");
+  $scope.showPriceForm = function(item_id) {
+    $("#form-"+item_id).css("display","inline-block");
+    $(".unit-price-"+item_id).css("display","none");
+    $("#edit-price-btn-"+item_id).css("display","none");
+    $("#close-price-btn-"+item_id).css("display","inline-block");
   };
-  $scope.hidePriceForm = function(item) {
-    $("#form-"+item).css("display","none");
-    $(".unit-price-"+item).css("display","inline-block");
-    $("#edit-price-btn-"+item).css("display","inline-block");
-    $("#close-price-btn-"+item).css("display","none");
+  $scope.hidePriceForm = function(item_id) {
+    $("#form-"+item_id).css("display","none");
+    $(".unit-price-"+item_id).css("display","inline-block");
+    $("#edit-price-btn-"+item_id).css("display","inline-block");
+    $("#close-price-btn-"+item_id).css("display","none");
   };
 
   // Notes functions

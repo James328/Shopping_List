@@ -1,7 +1,10 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-$query="SELECT ID, NAME, CREATED_AT from list order by id asc";
+$query="
+		SELECT list_id, name, created_at 
+		FROM list 
+		ORDER BY list_id asc";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();

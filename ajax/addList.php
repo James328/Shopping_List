@@ -1,12 +1,12 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
-if(isset($_GET['list']))
+if(isset($_GET['listName']))
 {
-	$list = $mysqli->real_escape_string($_GET['list']);
+	$list_name = $mysqli->real_escape_string($_GET['listName']);
 	$status = "0";
 	$created = date("Y-m-d", strtotime("now"));
 
-	$query="INSERT INTO list(name,created_at,status)  VALUES ('$list', '$created', '$status')";
+	$query="INSERT INTO list(name,created_at,status)  VALUES ('$list_name', '$created', '$status')";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$result = $mysqli->affected_rows;
