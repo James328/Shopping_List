@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jul 24, 2016 at 09:21 AM
+-- Generation Time: Jul 24, 2016 at 09:38 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -31,7 +31,7 @@ CREATE TABLE `item` (
   `price` decimal(4,2) DEFAULT NULL,
   `price_type` int(11) DEFAULT NULL,
   `notes` longtext COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `item`
@@ -41,10 +41,9 @@ INSERT INTO `item` (`item_id`, `list_id`, `user_id`, `name`, `created_at`, `stat
 (15, 2, 0, 'Bread', '2016-07-24 03:55:11', 0, 1, '5.00', 0, ''),
 (24, 3, 0, 'Hammer', '2016-06-29 05:00:00', 0, 1, '5.99', 0, ''),
 (25, 2, 0, 'Oranges', '2016-06-29 05:00:00', 0, 4, '1.00', 2, ''),
-(26, 3, 0, 'Nails', '2016-06-29 05:00:00', 0, 3, '0.89', 2, ''),
-(27, 2, 0, 'Beer', '2016-07-24 04:09:37', 0, 4, '6.99', 2, 'Fat tire pls'),
-(30, 4, 0, 'Prescriptions', '2016-07-24 04:08:03', 0, 1, '0.00', NULL, 'Make sure to get generic'),
-(31, 2, 0, 'Eggs', '2016-07-24 04:10:56', 0, 1, '1.00', NULL, 'Make sure to get the large size');
+(27, 2, 0, 'Beer', '2016-07-24 07:34:40', 0, 1, '6.99', 2, 'Fat tire pls'),
+(31, 2, 0, 'Eggs', '2016-07-24 07:32:58', 0, 1, '5.99', NULL, 'Make sure to get the large size'),
+(36, 0, 0, 'Prescriptions', '2016-07-24 07:32:13', 0, 1, NULL, NULL, 'Make sure to get generics');
 
 -- --------------------------------------------------------
 
@@ -92,7 +91,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `active_list`, `first_name`, `last_name`, `email`, `pass`, `registration_date`) VALUES
-(1, 1, 'James', 'Hume', 'james@hume.com', '1234', '2016-07-24 06:18:01');
+(1, 1, 'James', 'Hume', 'james@hume.com', '1234', '2016-07-24 07:34:38');
 
 -- --------------------------------------------------------
 
@@ -150,7 +149,7 @@ ALTER TABLE `user_item`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `item_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `list`
 --
@@ -169,18 +168,6 @@ ALTER TABLE `user_item`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `item`
---
-ALTER TABLE `item`
-  ADD CONSTRAINT `item_list` FOREIGN KEY (`list_id`) REFERENCES `list` (`list_id`);
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_active_list` FOREIGN KEY (`active_list`) REFERENCES `list` (`list_id`);
 
 --
 -- Constraints for table `user_item`
