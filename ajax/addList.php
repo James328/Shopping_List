@@ -6,7 +6,7 @@ if(isset($_GET['listName']))
 	$status = "0";
 	$created = date("Y-m-d", strtotime("now"));
 
-	$query="INSERT INTO list(name,created_at,status)  VALUES ('$list_name', '$created', '$status')";
+	$query="INSERT INTO list(name,created_at)  VALUES ('$list_name', '$created')";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$result = $mysqli->affected_rows;
