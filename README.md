@@ -19,7 +19,3 @@ Requires PHP / MySQL, I'm using [MAMP](https://www.mamp.info/en/) to work locall
 - [X] ~~Function to calculate sum of prices for what has been entered in the shopping list~~
 - [X] ~~Instead of tapping on the item in the shopping list to update status to complete, require that a price is entered in order to complete the item from the shopping list and move to the bottom of the list~~
 - [X] ~~Add notes to items purchased~~
-
-## shop.sql EER Diagram
-Current database EER model (MySQL Workbench files = shop.mwb) [work in progress]:
-![ScreenShot](https://raw.github.com/James328/Shopping_List/master/shop_db.png)
