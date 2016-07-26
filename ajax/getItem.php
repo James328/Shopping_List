@@ -1,19 +1,20 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
-$status = '%';
+
+$user_id 	= '1';		// manually setting the user ID for now
+$status 	= '%';
+
 if(isset($_GET['status']))
 {
 	$status = $mysqli->real_escape_string($_GET['status']);
 }
 
-$user_id = '1';	// manually setting the user ID for now, which also means
-						// $active_list is manually set in db, currently == 1
-
-// pulling the active_list
+# Pulling the active_list
 $query="
-		SELECT user_id, active_list
+		SELECT active_list
 		FROM user 
 		WHERE user_id='$user_id'";
+
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 $arr = array();
@@ -40,8 +41,6 @@ else
 		WHERE list_id='$active_list' 
 		ORDER BY status,item_id desc, quantity asc";
 }
-
-//$query="SELECT ID, ITEM, STATUS, CREATED_AT, QUANTITY, PRICE, LIST_ID, NOTES from item where status like '$status' order by status,id desc, quantity asc";
 
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
