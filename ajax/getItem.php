@@ -28,6 +28,7 @@ $active_list = $arr[0]['active_list'];
 
 if($active_list == '1')
 {
+	# If the active list == 1, that means Show All, so we need to query every item in the db..
 	$query="
 		SELECT item_id, list_id, user_id, name, created_at, status, quantity, price, notes 
 		FROM item 
@@ -35,6 +36,7 @@ if($active_list == '1')
 }
 else
 {
+	# ..else, we query only the items that are in the active list
 	$query="
 		SELECT item_id, list_id, user_id, name, created_at, status, quantity, price, notes 
 		FROM item 
