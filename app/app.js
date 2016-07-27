@@ -9,7 +9,7 @@ app.controller('shopController', function($scope, $http) {
   getSumPrice();    // Sum all of the prices
  
   // Item functions
-  function getItem(){  
+  function getItem(){
     $http.post("ajax/getItem.php").success(function(data){
       $scope.items = data;
       getSumPrice();
