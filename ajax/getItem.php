@@ -10,7 +10,7 @@ if(isset($_GET['status']))
 }
 
 # Pulling the active_list
-$query="SELECT active_list user WHERE user_id='$user_id'";
+$query="SELECT active_list FROM user WHERE user_id='$user_id'";
 
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
