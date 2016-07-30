@@ -1,4 +1,4 @@
-<section class="items list">
+<section id="list" class="items list">
 	<header class="items-header">
 		<h3>Lists</h3>
 		<form class="form-inline" name="shopAddList">
@@ -20,11 +20,14 @@
 	<fieldset class="items-list">
 		<div class="items-list-item" ng-repeat="list in lists">
 
-		<a ng-click="deleteList(list.list_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
+			<div ng-if="list.list_id != 1">
+				<a ng-click="deleteList(list.list_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a>
+			</div>
 
-		<button ng-click="changeList(list.list_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity">
-		{{list.name}} - ID: {{list.list_id}}
-		
+			<button ng-click="changeList(list.list_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity">
+			{{list.name}}
+			</button>
+		</div>
 	</fieldset>
 
 </section>
