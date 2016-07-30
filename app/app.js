@@ -109,6 +109,8 @@ app.controller('shopController', function($scope, $http) {
     if(confirm("Are you sure to delete this item?")){
       $http.post("ajax/deleteList.php?listID="+list_id).success(function(data){
         getList();
+        getCurrentList();
+        getItem();
       });
     }
   };
