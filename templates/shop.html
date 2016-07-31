@@ -91,7 +91,7 @@
 				<form class="form-inline form-change-price" name="itemPrice" id="form-{{item.item_id}}">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
-							<input class="form-control" ng-model="priceInput" placeholder="{{item.price}}" required />
+							<input class="form-control" ng-model="priceInput" placeholder="{{item.price}}" type="number" required />
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
@@ -107,7 +107,7 @@
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input type="hidden" value="{{item.status}}" ng-checked="item.status==2" />
-							<input class="form-control" ng-model="priceInput" placeholder="Price" required />
+							<input class="form-control" ng-model="priceInput" placeholder="Price" type="number" required />
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); changeStatus(item.item_id,item.status,item.name); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
