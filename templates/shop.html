@@ -7,7 +7,7 @@
 						<div class="input-group">
 
 							<input type="text" class="form-control input-item" ng-model="itemInput" placeholder="Add New Item" autofocus required />
-							<input class="form-control input-quantity" ng-model="quantityInput" placeholder="Quantity" />
+							<input class="form-control input-quantity" ng-model="quantityInput" placeholder="Quantity" type="number" />
 			
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null;" ng-disabled="shopList.$invalid">
