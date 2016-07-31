@@ -99,6 +99,7 @@ body {
   line-height: 24px;
 
   display: block;
+  clear: both;
 
   padding: 12px 15px;
   /*cursor: pointer;
@@ -249,10 +250,10 @@ input.input-quantity {
 /* buttons */
 .btn-increase-quantity {
   margin-left: 10px;
-  padding: 5px 7px;
+  padding: 8px;
 }
 .btn-decrease-quantity {
-  padding: 5px 7px;
+  padding: 8px;
 }
 .btn-delete-item {
   margin-left: 10px;
