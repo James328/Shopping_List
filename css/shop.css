@@ -223,6 +223,9 @@ h1.current-list {
 
   color: #4caf50;
 }
+.price {
+  padding-bottom: 6px;
+}
 
 .list-id {
   padding-left: 10px;
