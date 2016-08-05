@@ -1,13 +1,7 @@
 # Shopping_List
 ![ScreenShot](https://raw.github.com/James328/Shopping_List/master/screenshot.png)
 
-AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angularjs-and-bootstrap-mysql-shopping-list-tutorial/. Using this as a guide towards getting my feet wet with Angular.
-
-## Installation
-Requires PHP / MySQL, I'm using [MAMP](https://www.mamp.info/en/) to work locally but there are tons of other solutions for setting up an appropriate LAMP environment. Setup is almost as easy as installing Wordpress.
-- Use shop.sql to setup your MySQL tables
-- Update includes/db.php in order to connect to db
-- Should be good to go after that!
+AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angularjs-and-bootstrap-mysql-shopping-list-tutorial/. Using this as a guide towards getting my feet wet with Angular. Using PHP ajax for the backend, with MySQL for db. Currently using Bootstrap for UI (which means also including jquery...) but I plan on getting away from this when ready. For user authorization I decided to try [Auth0](https://auth0.com/). For now I'm using [MAMP](https://www.mamp.info/en/) to work locally on the project.
 
 ## To Do List / Ideas
 - [ ] User authentication
