@@ -1,4 +1,4 @@
-//Primary angular module for app
+// Primary angular module for app
 angular.module('shopApp', [
   'auth0',
   'ngRoute',
@@ -12,7 +12,7 @@ angular.module('shopApp', [
   $routeProvider
     .when( '/', {
       controller: 'shopController',
-      templateUrl: 'templates/list.html',
+      templateUrl: 'templates/home.html',
       pageTitle: 'Homepage',
       requiresLogin: true
     })
@@ -71,6 +71,7 @@ angular.module('shopApp', [
 
   });
 })
+// index.html controller
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   $scope.$on('$routeChangeSuccess', function(e, nextRoute){
     if ( nextRoute.$$route && angular.isDefined( nextRoute.$$route.pageTitle ) ) {
@@ -78,12 +79,12 @@ angular.module('shopApp', [
     }
   });
 })
-//Login.html controller
+// templates/login.html controller
 .controller( 'LoginCtrl', function ( $scope, auth, $rootScope) {
   $scope.auth = auth;
 });
 
-//Homepage angular module
+// tmeplates/home.html angular module
 angular.module( 'shopApp.home', [
 'auth0'
 ])
