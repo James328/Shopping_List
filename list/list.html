@@ -1,0 +1,29 @@
+  <div ng-controller="shopController" class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+      <div class="navbar-header navbar-brand"><i class="fa fa-check-square-o"></i>&nbsp;Shopping List</div><!-- /.navbar-header -->
+      Welcome {{auth.profile.nickname}}
+  <button class="btn-sm btn-warning" ng-click="logout()">Logout</button>
+      <div class="pull-right">
+        <button class="btn btn-default btn-sm mt-10" ng-click="clearItem()">
+          Clear Completed Items
+        </button>
+      </div>    	
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-8">
+        <h1 class="current-list">List: {{ currentList.name }}</h1>
+
+        <span class="total-price">Total {{sumPrice.price | currency}}</span>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8">
+        <div ng-include src="'templates/shop.html'"></div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-4">
+        <div ng-include src="'templates/list.html'"></div>
+      </div>
+
+    </div>
+  </div>
