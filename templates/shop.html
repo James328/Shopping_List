@@ -2,13 +2,12 @@
 	<header class="items-header">
 		<div class="row">
 			<div class="col-sm-9 col-xs-12">
-				<h3>Items</h3>
 				<form class="form-inline" name="shopList">
 					<div class="form-actions">
 						<div class="input-group">
 
 							<input type="text" class="form-control input-item" ng-model="itemInput" placeholder="Add New Item" autofocus required />
-							<input class="form-control input-quantity" ng-model="quantityInput" placeholder="Quantity" />
+							<input class="form-control input-quantity" ng-model="quantityInput" placeholder="Quantity" type="number" />
 			
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addItem(itemInput,quantityInput); itemInput = null; quantityInput = null;" ng-disabled="shopList.$invalid">
@@ -29,33 +28,35 @@
 
 	<fieldset class="items-list">
 		<div class="items-list-item" ng-repeat="item in items | filter : filterItem">
-			<label>
-				<input
-				type="checkbox"
-				value="{{item.status}}"
-				ng-checked="item.status==2"
-				ng-click="changeStatus(item.item_id,item.status,item.name,item)"
-				class="items-list-cb"/>
-				<span class="items-list-mark"></span>
-			</label>
-			<span class="items-list-desc" ng-class="{strike:item.status==2}">
-				{{item.name}}
-				<span class="date" style="display:none;">[{{item.created_at | date:"MMM d"}}]</span>&nbsp;
+			<span style="clear:both; display:block; margin: 0 0 10px 0;">
+				<label>
+					<input
+					type="checkbox"
+					value="{{item.status}}"
+					ng-checked="item.status==2"
+					ng-click="changeStatus(item.item_id,item.status,item.name,item)"
+					class="items-list-cb"/>
+					<span class="items-list-mark"></span>
+				</label>
+				<span class="items-list-desc" ng-class="{strike:item.status==2}">
+					{{item.name}}
+					<span class="date" style="display:none;">[{{item.created_at | date:"MMM d"}}]</span>&nbsp;
 
-				<span class="quantity"><i class="fa fa-times"></i>{{item.quantity}}		
-					<span ng-if="item.status == 0"> 
-						<button ng-click="increaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
-						<button ng-click="decreaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
+					<span class="quantity"><i class="fa fa-times"></i>{{item.quantity}}		
+						<span ng-if="item.status == 0"> 
+							<button ng-click="increaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-increase-quantity"><i class="fa fa-plus"></i></button>
+							<button ng-click="decreaseQuantity(item.item_id)" type="button" class="btn btn-sm btn-default btn-decrease-quantity"><i class="fa fa-minus"></i></button>
+						</span>
 					</span>
-				</span>
+				</span> 
 
-			</span> 
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#notesModal-{{item.item_id}}">
+				  Notes
+				</button>
 
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#notesModal-{{item.item_id}}">
-			  Notes
-			</button>
-
+				<a ng-click="deleteItem(item.item_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
+			</span>
 			<!-- Modal -->
 			<div class="modal fade" id="notesModal-{{item.item_id}}" tabindex="-1" role="dialog" aria-labelledby="notesModal-{{item.item_id}}">
 			  <div class="modal-dialog" role="document">
@@ -77,8 +78,6 @@
 			  </div>
 			</div>
 
-			<a ng-click="deleteItem(item.item_id)" class="pull-right red btn-delete-item"><i class="fa fa-minus-circle"></i></a> 
-
 			<div ng-if="item.price != null" class="price pull-right">
 				<!-- <span class="unit-price unit-price-{{item.item_id}}"><span>${{item.price}} each,</span> --> ${{item.price * item.quantity | number:2 }}</span>
 				<span ng-if="item.status == 0"> 
@@ -92,7 +91,7 @@
 				<form class="form-inline form-change-price" name="itemPrice" id="form-{{item.item_id}}">
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
-							<input class="form-control" ng-model="priceInput" placeholder="{{item.price}}" required />
+							<input class="form-control" ng-model="priceInput" placeholder="{{item.price}}" type="number" required />
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
@@ -108,7 +107,7 @@
 					<div class="form-actions">
 						<div class="input-group input-group-sm">
 							<input type="hidden" value="{{item.status}}" ng-checked="item.status==2" />
-							<input class="form-control" ng-model="priceInput" placeholder="Price" required />
+							<input class="form-control" ng-model="priceInput" placeholder="Price" type="number" required />
 							<div class="input-group-btn">
 								<button class="btn btn-info" type="submit" ng-click="addPrice(item.item_id,priceInput); changeStatus(item.item_id,item.status,item.name); priceInput = null;" ng-disabled="itemPrice.$invalid">
 									Save
