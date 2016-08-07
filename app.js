@@ -235,4 +235,10 @@ angular.module( 'shopApp.home', [
       getCurrentList();
     });
   };
+})
+.filter('debug', function() {
+  return function(input) {
+    if (input === '') return 'empty string';
+    return input ? input : ('' + input);
+  };
 });
