@@ -121,6 +121,8 @@ angular.module( 'shopApp.home', [
     store.remove('token');
     $location.path('/login');
   }
+
+  var auth_id = auth.profile.user_id;
  
   // Main app ajax functions
   // Item functions
@@ -131,7 +133,7 @@ angular.module( 'shopApp.home', [
     });
   };
   $scope.addItem = function (name, quantity) {
-    $http.post("ajax/addItem.php?name="+name+"&quantity="+quantity).success(function(data){
+    $http.post("ajax/addItem.php?userID="+auth_id+"&name="+name+"&quantity="+quantity).success(function(data){
       getItem();
       $scope.itemInput = "";
     });

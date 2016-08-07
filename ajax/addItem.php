@@ -1,11 +1,10 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-$user_id = '1';
-
-if(isset($_GET['name']))
+if(isset($_GET['name']) && isset($_GET['userID']))
 {
 	$name = $mysqli->real_escape_string($_GET['name']);
+	$user_id = $mysqli->real_escape_string($_GET['userID']);
 	$status = "0";
 	$created = date("Y-m-d", strtotime("now"));
 
@@ -30,8 +29,8 @@ if(isset($_GET['name']))
 	$active_list = $arr[0]['active_list'];
 
 	$query="
-		INSERT INTO item(list_id,name,status,created_at,quantity)
-		VALUES ('$active_list', '$name', '$status', '$created', '$quantity')";
+		INSERT INTO item(list_id,user_id,name,status,created_at,quantity)
+		VALUES ('$active_list', '$user_id', '$name', '$status', '$created', '$quantity')";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
