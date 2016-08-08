@@ -174,7 +174,7 @@ angular.module( 'shopApp.home', [
 
   // Price functions
   function getSumPrice(){
-    $http.post("ajax/getSumPrice.php").success(function(data){
+    $http.post("ajax/getSumPrice.php?authID="+auth_id).success(function(data){
       $scope.sumPrice = data;
     });
   };

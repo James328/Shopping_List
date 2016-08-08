@@ -1,24 +1,21 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-$user_id = '1';	// manually setting the user ID for now, which also means
-						// $active_list is manually set in db, currently == 1
-
-// pulling the active_list
-$query="
-		SELECT user_id, active_list 
-		FROM user 
-		WHERE user_id='$user_id'";
-$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
-
-$arr = array();
-if($result->num_rows > 0) {
-	while($row = $result->fetch_assoc()) {
-		$arr[] = $row;	
-	}
+if(isset($_GET['authID']))
+{
+	$auth_id = $mysqli->real_escape_string($_GET['authID']);
 }
 
-$active_list = $arr[0]['active_list'];
+# Pulling the active_list
+$query="SELECT active_list FROM user WHERE auth_id='$auth_id'";
+$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+$active_list = array();
+if($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()) {
+		$active_list[] = $row;	
+	}
+}
+$active_list = $active_list[0]['active_list'];
 
 if($active_list == '1')
 {
