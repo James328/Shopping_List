@@ -225,7 +225,7 @@ angular.module( 'shopApp.home', [
   };
   $scope.deleteList = function (list_id) {
     if(confirm("Are you sure to delete this item?")){
-      $http.post("ajax/deleteList.php?listID="+list_id).success(function(data){
+      $http.post("ajax/deleteList.php?listID="+list_id+"&authID="+auth_id).success(function(data){
         getList();
         getCurrentList();
         getItem();
