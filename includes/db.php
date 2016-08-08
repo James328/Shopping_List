@@ -1,6 +1,15 @@
 <?php 
 
-$heroku_clear_db = true;	// set to false to use local db
+if ( stristr($_SERVER['SERVER_NAME'], 'localhost' ) )
+{
+	// dev server
+	$heroku_clear_db = false;	// set to false to use local db
+}
+else
+{
+	// production server
+	$heroku_clear_db = true;	// set to false to use local db
+}
 
 if($heroku_clear_db == false)
 {
