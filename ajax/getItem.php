@@ -1,16 +1,23 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-$user_id 	= '1';		// manually setting the user ID for now
 $status 	= '%';
+
+if(isset($_GET['userID']))
+{
+	$user_id = $mysqli->real_escape_string($_GET['userID']);
+}
 
 if(isset($_GET['status']))
 {
 	$status = $mysqli->real_escape_string($_GET['status']);
 }
 
+//Debug
+//echo 'Auth id: ' . $user_id . '<br />';
+
 # Pulling the active_list
-$query="SELECT active_list FROM user WHERE user_id='$user_id'";
+$query="SELECT active_list FROM user WHERE auth_id='$user_id'";
 
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
@@ -20,14 +27,17 @@ if($result->num_rows > 0) {
 		$active_list[] = $row;	
 	}
 }
+$active_list = $active_list[0]['active_list'];
 
-if($active_list[0]['active_list'] == '1')
+//Debug
+//echo 'Active list: ' . $active_list . '<br />'; 
+if($active_list == '1')
 {
 	# If the active list == 1, that means Show All, so we need to query every item in the db..
 	$query="
 		SELECT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
 		FROM item AS i INNER JOIN user as u
-		WHERE u.user_id = '$user_id'
+		WHERE i.user_id = '$user_id'
 		ORDER BY status,item_id desc, quantity asc";
 }
 else
@@ -36,8 +46,8 @@ else
 	$query="
 		SELECT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
 		FROM item AS i INNER JOIN user as u
-		ON i.list_id = u.active_list
-		WHERE u.user_id = '$user_id'
+		ON i.list_id = '$active_list'
+		WHERE i.user_id = '$user_id'
 		ORDER BY status,item_id desc, quantity asc";
 }
 
