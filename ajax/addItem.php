@@ -15,7 +15,7 @@ if(isset($_GET['name']) && isset($_GET['authID']))
 	if($quantity == undefined){ $quantity = "1"; } // Make sure $quantity is > 0
 
 	# Pulling the active_list
-	$query="SELECT active_list FROM user WHERE user_id='$auth_id'";
+	$query="SELECT active_list FROM user WHERE auth_id='$auth_id'";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 

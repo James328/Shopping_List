@@ -208,7 +208,7 @@ angular.module( 'shopApp.home', [
 
   // List functions
   function getList(){  
-    $http.post("ajax/getList.php").success(function(data){
+    $http.post("ajax/getList.php?authID="+auth_id).success(function(data){
       $scope.lists = data;
     });
   };
@@ -218,7 +218,7 @@ angular.module( 'shopApp.home', [
     });
   };
   $scope.addList = function (list_name) {
-    $http.post("ajax/addList.php?listName="+list_name).success(function(data){
+    $http.post("ajax/addList.php?authID="+auth_id+"&listName="+list_name).success(function(data){
       getList();
       $scope.listInput = "";
     });
