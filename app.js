@@ -233,7 +233,7 @@ angular.module( 'shopApp.home', [
     }
   };
   $scope.changeList = function(list_id) {
-    $http.post("ajax/updateList.php?listID="+list_id).success(function(data){
+    $http.post("ajax/updateList.php?authID="+auth_id+"&listID="+list_id).success(function(data){
       getItem();
       getCurrentList();
     });
