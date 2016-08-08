@@ -1,10 +1,10 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-if(isset($_GET['name']) && isset($_GET['userID']))
+if(isset($_GET['name']) && isset($_GET['authID']))
 {
 	$name = $mysqli->real_escape_string($_GET['name']);
-	$user_id = $mysqli->real_escape_string($_GET['userID']);
+	$auth_id = $mysqli->real_escape_string($_GET['authID']);
 	$status = "0";
 	$created = date("Y-m-d", strtotime("now"));
 
@@ -15,7 +15,7 @@ if(isset($_GET['name']) && isset($_GET['userID']))
 	if($quantity == undefined){ $quantity = "1"; } // Make sure $quantity is > 0
 
 	# Pulling the active_list
-	$query="SELECT active_list FROM user WHERE user_id='$user_id'";
+	$query="SELECT active_list FROM user WHERE user_id='$auth_id'";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
@@ -30,7 +30,7 @@ if(isset($_GET['name']) && isset($_GET['userID']))
 
 	$query="
 		INSERT INTO item(list_id,user_id,name,status,created_at,quantity)
-		VALUES ('$active_list', '$user_id', '$name', '$status', '$created', '$quantity')";
+		VALUES ('$active_list', '$auth_id', '$name', '$status', '$created', '$quantity')";
 
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 

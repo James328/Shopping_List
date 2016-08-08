@@ -128,13 +128,13 @@ angular.module( 'shopApp.home', [
   // Main app ajax functions
   // Item functions
   function getItem(){
-    $http.post("ajax/getItem.php?userID="+auth_id).success(function(data){
+    $http.post("ajax/getItem.php?authID="+auth_id).success(function(data){
       $scope.items = data;
       getSumPrice();
     });
   };
   $scope.addItem = function (name, quantity) {
-    $http.post("ajax/addItem.php?userID="+auth_id+"&name="+name+"&quantity="+quantity).success(function(data){
+    $http.post("ajax/addItem.php?authID="+auth_id+"&name="+name+"&quantity="+quantity).success(function(data){
       getItem();
       $scope.itemInput = "";
     });
