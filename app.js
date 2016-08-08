@@ -213,7 +213,7 @@ angular.module( 'shopApp.home', [
     });
   };
   function getCurrentList(){
-    $http.post("ajax/getCurrentList.php").success(function(data){
+    $http.post("ajax/getCurrentList.php?authID="+auth_id).success(function(data){
       $scope.currentList = data;
     });
   };
