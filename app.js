@@ -90,15 +90,6 @@ angular.module( 'shopApp.home', [
 ])
 .controller('shopController', function shopController($scope, auth, $http, $location, store, $rootScope) {
 
-  var auth_id = auth.profile.user_id;
-  console.log(auth_id);
-
-  // Initialize the app
-  getItem();        // Load all available items
-  getList();        // Load all shopping lists
-  getCurrentList(); // Get active_list from user table
-  getSumPrice();    // Sum all of the prices
-
   // Auth0 functions
   $scope.auth = auth;
   console.log($rootScope.profile);
@@ -124,6 +115,15 @@ angular.module( 'shopApp.home', [
     store.remove('token');
     $location.path('/login');
   }
+
+  var auth_id = auth.profile.user_id;
+  console.log(auth_id);
+
+  // Initialize the app
+  getItem();        // Load all available items
+  getList();        // Load all shopping lists
+  getCurrentList(); // Get active_list from user table
+  getSumPrice();    // Sum all of the prices
  
   // Main app ajax functions
   // Item functions
