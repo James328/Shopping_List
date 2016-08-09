@@ -34,8 +34,9 @@ $active_list = $active_list[0]['active_list'];
 if($active_list == '1')
 {
 	# If the active list == 1, that means Show All, so we need to query every item in the db..
+	# Using DISTINCT to eliminate duplicates when having multiple users - hack, but it works for now
 	$query="
-		SELECT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
+		SELECT DISTINCT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
 		FROM item AS i INNER JOIN user as u
 		WHERE i.user_id = '$auth_id'
 		ORDER BY status,item_id desc, quantity asc";
@@ -43,8 +44,9 @@ if($active_list == '1')
 else
 {
 	# ..else, we query only the items that are in the active list
+	# Using DISTINCT to eliminate duplicates when having multiple users - hack, but it works for now
 	$query="
-		SELECT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
+		SELECT DISTINCT item_id, list_id, i.user_id, name, i.created_at, status, quantity, price, notes
 		FROM item AS i INNER JOIN user as u
 		ON i.list_id = '$active_list'
 		WHERE i.user_id = '$auth_id'
