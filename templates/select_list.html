@@ -17,6 +17,11 @@
 	</header>
 
 	<fieldset class="items-list">
+		<div class="items-list-item">
+			<button ng-click="changeList('1')" type="button" class="btn btn-sm btn-default btn-increase-quantity">
+			Show All
+			</button>
+		</div>
 		<div class="items-list-item" ng-repeat="list in lists">
 
 			<div ng-if="list.list_id != 1">
