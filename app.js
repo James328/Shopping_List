@@ -11,7 +11,7 @@ angular.module('shopApp', [
 
   $routeProvider
     .when( '/', {
-      controller: 'shopController',
+      //controller: 'shopController',
       templateUrl: 'templates/home.html',
       pageTitle: 'Homepage',
       requiresLogin: true
@@ -92,7 +92,9 @@ angular.module( 'shopApp.home', [
 
   // Auth0 functions
   $scope.auth = auth;
-  console.log($rootScope.profile);
+  //console.log($rootScope.profile);
+  var auth_id = $scope.auth.profile.user_id;
+  console.log("Auth_id: "+auth_id);
   $scope.callApi = function() {
     // Just call the API as you'd do using $http
     $http({
@@ -115,9 +117,6 @@ angular.module( 'shopApp.home', [
     store.remove('token');
     $location.path('/login');
   }
-
-  var auth_id = auth.profile.user_id;
-  console.log(auth_id);
 
   // Initialize the app
   getItem();        // Load all available items
