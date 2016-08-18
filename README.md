@@ -9,6 +9,7 @@ AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angula
 - [X] ~~User authentication~~
 - [ ] Unit / build testing
 - [ ] Indexing / relational system to help cache items previously entered, and store historical data about the item with the timestamps and prices
+- [ ] Ability to switch the list an item belongs to
 - [X] ~~Ability to create multiple shopping lists~~
 - [ ] Add photos to item purchased (ability to use camera on mobile device, no clue how hard this would be)
 - [X] ~~Be able to update the price by clicking / tapping, and indicate whether unit price or all together~~
