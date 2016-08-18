@@ -1,7 +1,7 @@
 # Shopping_List
 ![ScreenShot](https://raw.github.com/James328/Shopping_List/master/screenshot.png)
 
-#### Now live on Heroku: https://glacial-coast-59061.herokuapp.com
+### Now live on Heroku: https://glacial-coast-59061.herokuapp.com
 
 AngularJS shopping list app - based off of http://lekkerlogic.com/2015/05/angularjs-and-bootstrap-mysql-shopping-list-tutorial/. Using this as a guide towards getting my feet wet with Angular. Using PHP ajax for the backend, with MySQL for db. Currently using Bootstrap for UI (which means also including jquery...) but I plan on getting away from this when ready. For user authorization I decided to try [Auth0](https://auth0.com/). For now I'm using [MAMP](https://www.mamp.info/en/) to work locally on the project.
 
