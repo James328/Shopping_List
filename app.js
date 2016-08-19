@@ -11,7 +11,7 @@ angular.module('shopApp', [
 
   $routeProvider
     .when( '/', {
-      //controller: 'shopController',
+      controller: 'shopController',
       templateUrl: 'templates/home.html',
       pageTitle: 'Homepage',
       requiresLogin: true
