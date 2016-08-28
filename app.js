@@ -82,6 +82,12 @@ angular.module('shopApp', [
 // templates/login.html controller
 .controller( 'LoginCtrl', function ( $scope, auth, $rootScope) {
   $scope.auth = auth;
+})
+.filter('debug', function() {
+  return function(input) {
+    if (input === '') return 'empty string';
+    return input ? input : ('' + input);
+  };
 });
 
 // tmeplates/home.html angular module
